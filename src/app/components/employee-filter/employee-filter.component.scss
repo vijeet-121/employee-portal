@@ -1,0 +1,41 @@
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+  }
+  
+  div {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  select, button {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .clear-btn {
+    padding: 10px 40px;
+    background: white;
+    outline: none;
+    border: 2px solid #49a677;
+    border-radius: 3px;
+    color: #49a677;
+    cursor: pointer;
+  }
+
+  .submit-btn {
+    padding: 10px 40px;
+    background: #49a677;
+    outline: none;
+    border: 2px solid #49a677;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+  }
+  

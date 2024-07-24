@@ -1,0 +1,52 @@
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="department">Department</label>
+      <select id="department" formControlName="department">
+        <option value="">Select Department</option>
+        <option *ngFor="let department of departments" [value]="department">
+          {{ department }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="experience">Experience</label>
+      <select id="experience" formControlName="experience">
+        <option value="">Select Experience</option>
+        <option *ngFor="let exp of experiences" [value]="exp">
+          {{ exp }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="yearOfJoining">Year of Joining</label>
+      <select id="yearOfJoining" formControlName="yearOfJoining">
+        <option value="">Select Year</option>
+        <option *ngFor="let year of yearsOfJoining" [value]="year">
+          {{ year }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="location">Location</label>
+      <select id="location" formControlName="location">
+        <option value="">Select Location</option>
+        <option *ngFor="let location of locations" [value]="location">
+          {{ location }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="team">Team</label>
+      <select id="team" formControlName="team">
+        <option value="">Select Team</option>
+        <option *ngFor="let team of teams" [value]="team">
+          {{ team }}
+        </option>
+      </select>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: end;">
+        <button class="submit-btn" style="margin-right: 1rem;" type="submit">Submit</button>
+        <button type="button" class="clear-btn" (click)="clearFilters()">Clear</button>    
+    </div>
+  </form>
+  

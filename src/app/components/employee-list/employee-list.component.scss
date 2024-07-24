@@ -1,0 +1,211 @@
+body, html {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.top-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 10px;
+
+    .count {
+        color: #6a6f75;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    
+    .create-btn {
+        padding: 10px 40px;
+        background: white;
+        outline: none;
+        border: 2px solid #49a677;
+        border-radius: 3px;
+        color: #49a677;
+        cursor: pointer;
+    }
+}
+
+
+
+.list-layout {
+    background-color: #f8fcfb;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    row-gap: 20px;
+    padding: 1%;
+    height: 77vh;
+    overflow: auto;
+    justify-content: center;    
+}
+
+.user-card {
+    width: 270px;
+    height: 307px;
+    border: 1px solid #cacaca;
+    position: relative;
+
+    &.withSearchBlock {
+        width: 32%;
+    }
+
+    .user-image {
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+    }
+    
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px;
+
+        .icon-name-section {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            .user-name {
+                color: #485a68;
+                font-weight: bold;
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .designation {
+                color: gray;
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+
+        i {
+            padding: 10px;
+            border-radius: 30px;
+            padding: 6px 8px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 10px;
+            cursor: pointer;
+
+            &.send {
+                color: #71abfc;
+            }
+
+            &.trash {
+                color: #c84639
+            }
+        }
+    }
+
+    .rating-section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 15px 10px;
+        color: #a3a0a0;
+        font-size: 12px;
+        border-bottom: 1px solid lightgray;
+        
+        .star-rating {
+            color: #f2b341;
+            display: flex;
+            gap: 5px;
+        }
+
+        .edit-icon {
+            margin-left: auto;
+            cursor: pointer;
+            font-size: 15px;
+            color: #49a677;
+            padding-right: 7px;
+        }
+    }
+
+    .data-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 10px;
+        font-size: 12px;
+        border-bottom: 1px solid lightgray;
+
+        label {
+            color: #a3a0a0;
+            padding-right: 5px;
+        }
+
+        span {
+            color: #485a68;
+            font-weight: bold;
+        }
+
+        i.mobile {
+            color: #305fad;
+            border-radius: 30px;
+            padding: 6px 8px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 10px;
+            margin-right: 3px;
+        }
+
+        i.email {
+            color: #c84639;
+            border-radius: 30px;
+            padding: 6px 8px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 10px;
+            margin-right: 3px;
+        }
+    }
+
+    .cofirmModal {
+        position: absolute;
+        top: 40%;
+        width: 90%;
+        padding: 5%;
+        background: cornflowerblue;
+        border-radius: 10px;
+
+        .confirmText {
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .cfrmButton {
+            background: #305fad;
+            outline: none;
+            border: none;
+            padding: 5px 20px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+
+            &.no {
+                background: #c84639;
+            }
+        }
+
+        .btnLayout {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+    }
+    .rating {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+      }
+      .material-icons {
+        color: #FFD700;
+      }
+      .text-position {
+        position: relative;
+        bottom: 10px;
+      }
+}

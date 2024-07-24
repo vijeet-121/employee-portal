@@ -1,0 +1,90 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    border-right: 1px solid lightgrey;
+  }
+  
+  .sidenav.collapsed {
+    width: 44px;
+  }
+  
+  .sidenav .toggle-btn {
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    cursor: pointer;
+    color: #01c796;
+    font-size: 24px;
+  }
+  
+  .sidenav .nav-item {
+    padding: 15px 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #01c796;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  
+  .sidenav .nav-item .material-icons {
+    margin-right: 10px;
+  }
+  
+  .sidenav .nav-item .nav-text {
+    flex: 1;
+  }
+  
+  .sidenav .badge {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    margin-left: auto;
+  }
+  
+  .sidenav .nav-item:hover {
+    background-color: lightgray;
+  }
+  
+  .main-content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.5s;
+  }
+  
+  .sidenav.collapsed ~ .main-content {
+    margin-left: 60px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .logo-img {
+    height: 60px;
+    margin-right: 10px;
+    width: 60%
+  }
+  
+  .logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4b4b4b;
+  }
+  

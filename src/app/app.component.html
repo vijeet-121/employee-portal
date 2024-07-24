@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="sidenav">
+    <app-sidenav (isSearchClicked)="isSearchClicked($event)"></app-sidenav>
+  </div>
+  <div class="main-section">
+    <header-nav></header-nav>
+    <div style="display: flex;">
+      <div *ngIf="showFilter" class="filter"><employee-filter (clearFilterClicked)="clearFilterClicked($event)" (filterChange)="filterChange($event)"></employee-filter></div>
+      <div class="content">
+        <employee-list [isClearFilterClicked]="isClearFilterClicked" [filters]="filters"></employee-list>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
