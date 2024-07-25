@@ -51,8 +51,7 @@
 
                 <label for="image">Select Avatar:</label>
                 <select id="image" formControlName="image">
-                    <option *ngFor="let img of uniqueImages" [value]="img"><img [src]="img" alt="img"
-                            class="user-image" /></option>
+                    <option *ngFor="let img of uniqueImages" [value]="img">{{img}}</option>
                 </select>
             </div>
             <div class="footer">
