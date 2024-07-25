@@ -1,12 +1,13 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { EmpService } from '../../services/emp.service';
 import { CommonModule } from '@angular/common';
 import { SafeHtml } from '@angular/platform-browser';
+import { CreateEmployeeComponent } from '../create-employee/create-employee.component';
 
 @Component({
   selector: 'employee-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CreateEmployeeComponent],
   providers: [EmpService],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.scss'
@@ -25,8 +26,14 @@ export class EmployeeListComponent {
   editUserData: any;
   rating: number = 0;
   stars: string[] = [];
+  isEdit = false;
+  isDialogOpen = false;
+  showConfirmDialog = false;
+  @ViewChild('employeeForm') createEmpl!: CreateEmployeeComponent;
+  employeeData: any;
+  currentId!: number;
 
-  constructor(private es: EmpService) {}
+  constructor(private es: EmpService) { }
 
   ngOnInit() {
     this.es.getEmployeeList().subscribe({
@@ -37,25 +44,25 @@ export class EmployeeListComponent {
     })
   }
 
-  
+
   ngOnChanges(changes: SimpleChanges) {
-    if(changes['isClearFilterClicked']?.currentValue) {
+    if (changes['isClearFilterClicked']?.currentValue) {
       this.filteredList = this.employees;
     } else if (changes['filters']) {
       this.filteredList = this.employees?.filter((user: any) => {
         return (!this.filters.department || user.department === this.filters.department) &&
-               (!this.filters.experience || user.experience === this.filters.experience) &&
-               (!this.filters.yearOfJoining || user.doj === this.filters.yearOfJoining) &&
-               (!this.filters.location || user.location === this.filters.location) &&
-               (!this.filters.team || user.team === this.filters.team);
+          (!this.filters.experience || user.experience === this.filters.experience) &&
+          (!this.filters.yearOfJoining || user.doj === this.filters.yearOfJoining) &&
+          (!this.filters.location || user.location === this.filters.location) &&
+          (!this.filters.team || user.team === this.filters.team);
       });
     }
   }
-  
+
   getStars(emp: any) {
     this.stars = [];
     for (let i = 1; i <= 5; i++) {
-      if (i <=emp.rating) {
+      if (i <= emp.rating) {
         this.stars.push('star');
       } else if (i - 0.5 <= emp.rating) {
         this.stars.push('star_half');
@@ -66,9 +73,20 @@ export class EmployeeListComponent {
     return this.stars;
   }
 
-  showCreateLayout() {
-    this.editUserData = null
-    this.showCreateBlock = true;
+  openCreateDialog() {
+    this.isDialogOpen = true;
+    this.isEdit = false;
+    this.createEmpl.openDialog();
+  }
+
+  refreshEmployees(emp: any) {
+    if (this.isEdit) {
+      const index = this.filteredList.findIndex((list: any) => list?.id === this.currentId);
+      this.filteredList[index] = emp;
+    } else {
+      emp.id = this.filteredList?.length;
+      this.filteredList.push(emp);
+    }
   }
 
   closeModal() {
@@ -96,30 +114,28 @@ export class EmployeeListComponent {
   }
 
   showConfirmationModal(user: any, index: number) {
-    this.employees.forEach((user: any) => {
+    this.filteredList.forEach((user: any) => {
       user.showConfirmation = false
     })
     user.showConfirmation = true
-    this.employees[index] = user
-    this.filteredList = this.employees;
+    this.filteredList[index] = user
   }
 
   onYes(index: number) {
-    this.userList.splice(index, 1)
-    this.filteredList = this.userList
+    this.filteredList.splice(index, 1);
   }
 
   onNo() {
-    this.userList.forEach(user => {
+    this.filteredList.forEach(user => {
       user.showConfirmation = false
-    })
-    this.filteredList = this.userList
+    });
   }
 
   editUser(user: any, index: number) {
-    user.id = index
-    this.editUserData = user
-    this.showCreateBlock = true;
+    this.currentId = index + 1;
+    this.employeeData = user;
+    this.isEdit = true;
+    this.isDialogOpen = true;
+    this.createEmpl?.openDialog();
   }
-
 }

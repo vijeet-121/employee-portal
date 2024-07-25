@@ -1,0 +1,64 @@
+<div *ngIf="isVisible" class="overlay">
+    <div class="dialog">
+        <div class="title">{{isEdit ? 'Edit Employee Details' : 'Create New Employee'}}</div>
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+            <div class="form-container">
+                <label for="name">Name:</label>
+                <input for="name" id="name" formControlName="name" type="text">
+
+                <label for="rating">Rating:</label>
+                <input  for="rating" id="rating" formControlName="rating" type="number" min="0" max="5">
+
+                <label for="doj">Date of Joining:</label>
+                <input id="doj" formControlName="doj" type="date" style="padding: 10px;">
+
+                <label for="reporting">Reporting Manager:</label>
+                <input id="reporting" formControlName="reporting" type="text">
+
+                <label for="mobile">Mobile Number:</label>
+                <input id="mobile" formControlName="mobile" type="text">
+
+                <label for="email">Email:</label>
+                <input id="email" formControlName="email" type="email">
+
+                <label for="department">Department:</label>
+                <select id="department" formControlName="department">
+                    <option *ngFor="let dept of uniqueDepartments" [value]="dept">{{ dept }}</option>
+                </select>
+
+                <label for="roleType">Role Type:</label>
+                <select id="roleType" formControlName="roleType">
+                    <option *ngFor="let role of uniqueRoleTypes" [value]="role">{{ role }}</option>
+                </select>
+
+                <label for="designation">Designation:</label>
+                <select id="designation" formControlName="designation">
+                    <option *ngFor="let desg of uniqueDesignations" [value]="desg">{{ desg }}</option>
+                </select>
+
+                <label for="experience">Experience:</label>
+                <input id="experience" formControlName="experience" type="number">
+
+                <label for="location">Location:</label>
+                <select id="location" formControlName="location">
+                    <option *ngFor="let loc of uniqueLocations" [value]="loc">{{ loc }}</option>
+                </select>
+
+                <label for="team">Team:</label>
+                <select id="team" formControlName="team">
+                    <option *ngFor="let team of uniqueTeams" [value]="team">{{ team }}</option>
+                </select>
+
+                <label for="image">Select Avatar:</label>
+                <select id="image" formControlName="image">
+                    <option *ngFor="let img of uniqueImages" [value]="img"><img [src]="img" alt="img"
+                            class="user-image" /></option>
+                </select>
+            </div>
+            <div class="footer">
+                <button class="submit-btn" type="submit">Submit</button>
+                <button class="close-btn" type="button" (click)="closeDialog()">Close</button>
+            </div>
+        </form>
+    </div>
+</div>

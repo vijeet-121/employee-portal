@@ -1,7 +1,8 @@
 <div class="top-layout">
     <div class="count">{{filteredList.length}} Results Found</div>
-    <button type="button" class="create-btn" (click)="showCreateLayout()">Create User</button>
+    <button type="button" class="create-btn" (click)="openCreateDialog()">Create Employee</button>
 </div>
+<create-employee *ngIf="isDialogOpen" [isEdit]="isEdit" [employeeData]="employeeData" (formSubmitted)="refreshEmployees($event)" #employeeForm></create-employee>
 <div class="list-layout">
     <div *ngFor="let user of filteredList; let i = index" class="user-card" [ngClass]="{'withSearchBlock': showSearchBlock}">
         <div class="card-header">
@@ -44,7 +45,7 @@
                 <span>{{user.reporting}}</span>
             </div>
         </div>
-        <div class="data-section">
+        <div class="data-section email-section">
             <div>
                 <i class="material-icons mobile">phone</i>
                 <span class="text-position">{{user.mobile}}</span>
@@ -56,7 +57,7 @@
         </div>
 
         <div *ngIf="user?.showConfirmation" class="cofirmModal">
-            <div class="confirmText">Are you sure you want to delete this user ?</div>
+            <div class="confirmText">Are you sure that you want to delete {{user?.name}} ?</div>
             <div class="btnLayout">
                 <button type="button" class="cfrmButton" (click)="onYes(i)">Yes</button>
                 <button type="button" class="cfrmButton no" (click)="onNo()">No</button>
@@ -64,5 +65,3 @@
         </div>
     </div>
 </div>
-
-<!-- <app-createuser *ngIf="showCreateBlock" (closeModalEvent)="closeModal()" (createUserEvent)="createNewUser($event)" (updateUserEvent)="updateUser($event)" [editUserData]="editUserData"></app-createuser> -->

@@ -159,6 +159,10 @@ body, html {
         }
     }
 
+    .email-section {
+        border-bottom: none !important;
+    }
+
     .cofirmModal {
         position: absolute;
         top: 40%;
@@ -202,7 +206,7 @@ body, html {
         align-items: center;
       }
       .material-icons {
-        color: #FFD700;
+        color: #ffbf00;
       }
       .text-position {
         position: relative;
